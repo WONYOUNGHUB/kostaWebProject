@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/external.css" type="text/css"/>
+<style>
+/*
+internal style sheet
+*/
+      ul {
+      /* 태그선택자 실습*/
+        color: blue; /* 목록의 글자색 */
+        list-style: none; /* 불릿 형태 : 사각형 */
+      	border : 1px solid green;
+      	padding:10px;
+      }
+      li{border :1px solid grey;
+      	padding: 10px;
+      }
+      p{
+      font-size:20px;
+    /*margin-left: 10px;
+      margin-top: 20px;
+      margin-right: 10px;
+      margin-bottom:  10px; */
+     margin:20px 10px 20px 20px;
+     
+     
+   /*border-width: 1px;
+     border-style: solid;
+     border-color: green; */
+     border:1px solid green;
+   	 padding : 10px 20px 10px 20px;
+      }
+      /* .class 호출  #id 호출  */
+      .aa{
+      background-color: pink;
+      }
+  	 li.aa{font-family: 30px;}
+  	 #bb{background-color: #ff0099;}
+	#container{border:5px dotted grey;
+		width:800px;
+		height:800px;
+		margin:0 auto;
+	}
+	/*그룹선택자 ,구분 */
+	h1,h2{text-align: center;}
+</style>
+</head>
+<body>
+<div id="container">
+  <img src="../images/umbrella.jpg" alt="시드니 오페라 하우스">
+  <ul>
+  <h1>세계 3대 미항</h1>
+  <h2>세계 3대 미항</h2>
+ 	  
+  	<!-- HTML주석 :html tag에서 style==> inline css -->
+    <li style="color:red;">시드니(Sydney), 호주</li>
+    <li>리우데자네이루(Rio de Janeiro), 브라질</li>
+    <li class="aa">나폴리(Naples), 이탈리아</li>
+  </ul>
+  <!--태그는달라도 같은효과주고싶다:class주면됨  -->
+  <h1>블루베리에 관한 연구</h1>
+  <h2>블루베리와 항산화 효능</h2> 
+  <p class="aa">블루베리는 항산화제인 안토시아닌과 폴리페놀을 다량 포함하고 있습니다.</p>
+  <p id="bb">매사츄세츠 보스톤에 있는 …… 과일이라고 합니다.  </p>
+  <h2>블루베리와 노화</h2> 
+  <p> USDA 인류 영양 연구센터…… 사실을 발견하였습니다. </p>
+</div>
+</body>
+
+</html>

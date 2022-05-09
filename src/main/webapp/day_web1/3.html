@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1,h2,h3,h4,h5,h6{font-size: 20px;}
+</style>
+</head>
+<body>
+<h1>h1태그는 가장 큰 제목</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+<hr>
+<p>HTML배우는 중.....p태그는 단락이다.1</p>
+<p>HTML배우는 중.....p태그는 단락이다.2</p>
+<p>HTML배우는 중.....p태그는 단락이다.3</p>
+<hr>
+<blockquote>HTML 배우는중이다 blockquote..</blockquote>
+<pre>
+기본형 : <pre>테스트</pre>
+소스에표시한 공백이 그대로 표시됨.
+프로그램 소스를 사용할 떄 유용함
+</pre>
+<pre>
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset = utf-8");
+		PrintWriter out=  response.getWriter();
+		out.append("<h1>Served at: ").append(request.getContextPath()+"</h1>")
+		.append("<h2>원영</h2>");
+
+</pre>
+</body>
+</html>

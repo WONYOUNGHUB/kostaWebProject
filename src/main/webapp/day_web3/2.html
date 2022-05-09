@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+	body{
+	color:blue;
+	background-color: beige;
+	font-family: "Nanum Gothic"
+	}
+
+	p{border:1px solid red !important; }
+	p{border:1px solid green;}
+	/*태그,.class선택 보다 #아이디선택이 우선순위 높다.!  */
+	/* 태그보다 .class 선택이 높음  */
+	/* improtant>inline>id>class>tag  */
+	#cc{border:1px solid red;}
+	h1{border:1px solid green !important ;}
+	.dd{border:1px solid skyblue;}
+	div.box { 
+	border: 1px solid skyblue;
+	width : 100px;
+	padding: 20px;
+	}
+
+	div.box:hover
+	{
+		color:red;
+		transform: rotate(15deg);
+	}
+	p{
+	/* font-size: 20px; */
+	font-size:1.5em;
+	font-weight: 900;
+	/* color:green; */
+	/* color:rgb(0,255,0); */
+	color:#ff0000;
+	text-align: center;
+	line-height: 1.5em;
+	}	
+	
+	.textDeco{  text-decoration: line-through;}
+	.upper{text-transform: uppercase;}
+	.caps{text-transform: capitalize;}
+</style>
+
+</head>
+<body>
+	<!--태그는달라도 같은효과주고싶다:class주면됨  -->
+	
+	<h1>
+	<span class="upper">@font-face</span>
+	<span class="caps">font-family: 'SDSaliphopangche_outline'</span>
+	</h1>
+	
+	<h1 id="cc" class="dd">블루베리에 관한 연구</h1>
+	<h2>블루베리와<span class="textDeco"> 항산화 </span>효능</h2>
+	<p class="aa">블루베리는 항산화제인 안토시아닌과 폴리페놀을 다량 포함하고 있습니다.</p>
+	<p id="bb">매사츄세츠 보스톤에 있는 …… 과일이라고 합니다. </p>
+	<h2>블루베리와 노화</h2>
+	<p>USDA 인류 영양 연구센터…… 사실을 발견하였습니다.</p>
+	<div class="box">
+	마우스오버
+	</div>
+</body>
+</html>

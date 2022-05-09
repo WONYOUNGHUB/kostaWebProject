@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>input tag의 여러가지 type살펴보기</h1>
+<form name="myfrm" action="inputResult.jsp">
+<input readonly="readonly" value="아이스커피" />
+1.<input name="kosata20" placeholder="아이디를 입력하세요" required="required">  <br>
+2.<input type="text" name="kosta1" ><br>
+3.<input type="password" name="kosta2" ><br>
+4.<input type="search" name="kosta3" ><br>
+5.<input type="submit" value="submit" name="kosta4"><br>
+6.<input type="button" onclick="f();" value="서버전송" name="kosta5"><br>
+7. <input type="email" placeholder="aa@bb.com" name="kosta6"></input>
+8. <input type="tel" pattern="[01]{3}-[0-9]{3,4}-[0-9]{4}" name="kosta7"></input>
+9. <input type="url" placeholder="http://aa.bb.cc" name="kosta8"></input>
+10.number숫자만입력<input type="number"name="kosta9" min="10" max="100" step="10" ></input>
+11.range:<input type="range" min="1" max="10" value="3" name="kosta10"></input>
+12.radio:서로배타적 하나만 넘어간다
+	<input type="radio" name="subject" value="java" />자바
+	<input type="radio" name="subject" value="sql" />SQL
+	<input type="radio" name="subject" value="HTML" />HTML
+	<input type="radio" name="subject" value="css" />CSS
+	<br>
+13.radio:서로배타적 <!-- 이름다르면 다른그룹 날아가는것은 value값 -->
+	<input type="radio" name="hobby" value="a" />자바공부
+	<input type="radio" name="hobby" value="b" />걷기
+	<input type="radio" name="hobby" value="c" checked />게임
+	<input type="radio" name="hobby" value="d" />농구
+14.checkbox(서로 독립적) <!-- 여러개선택가능 -->
+	<input type="checkbox" name="hobby2" value="a" />자바공부
+	<input type="checkbox" name="hobby2" value="b" />걷기
+	<input type="checkbox" name="hobby2" value="c" checked />게임
+	<input type="checkbox" name="hobby2" value="d" />농구
+	<br>
+15.color
+	<input type="color"><br>
+16.date,month,week,time,datetime-local
+	<input type="date" name="kosta11"/> <br>
+	<input type="month" name="kosta12"/> <b >
+	<input type="week" name="kosta13"/> <br >
+	<input type="time" name="kosta14"/> <br >
+	<input type="datetime-local" name="kosta15"> <br>
+	
+	<select name="hobby3" multiple="multiple">
+	<option value="java">자바공부하기</option>
+	<option>걷기</option>
+	<option>게임</option>
+	<option>농구</option>
+	</select>
+	
+	<select name="hobby4" multiple="multiple">
+	<option value="java">자바공부하기</option>
+	<option>걷기</option>
+	<option>게임</option>
+	<option>농구</option>
+	</select>
+	<input type="text" list="hobbylist" />
+	
+	<datalist id="hobbylist">
+	<option value="java">자바공부하기</option>
+	<opiton>걷기</opiton>
+	<opiton>게임</opiton>
+	<opiton>농구</opiton>
+	</datalist>
+	<br>
+	<textarea rows="" cols=""></textarea>
+	<input type="submit" value="서버로 전송하기" name="kosta16">
+	<input type="reset" value= "다시입력" name="kosta17">
+	<input type="image" src="../images/login.jpg" name="kosta18">
+	<input type="button" value ="button타입" name="kosta19">
+	<button>버튼태그이용1(form이 서버로 전송)</button>
+	<button>버튼태그이용2(form이 서버로 전송)</button>
+</form>
+
+
+
+
+
+	
+<script>
+function f(){
+	alert("버튼을 누름...")
+	myfrm.action = "anchor.html";
+	myfrm.submit();
+}
+</script>
+</body>
+</html>

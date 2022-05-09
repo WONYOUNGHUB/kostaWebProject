@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+*{margin : 0; padding:0;}
+div {
+	border: 1px solid red;
+	width: 500px;
+	height: 100px;
+	padding: 10px;
+	margin: 20px;
+}
+span{
+	border:1px solid grey;
+}
+.box1{
+	box-sizing: border-box;
+}/*width(500) = cotent(478) + padding(10*2)+border(1*2)  */
+.box2{
+	box-sizing: content-box;/*width(500)가 content만을 의미 */
+}
+p{border:1px solid grey;}
+.p1{width:500px;height:200px;}
+.p2{width:500px;height:200px;}
+
+</style>
+</head>
+<body>
+	<div class="box1">BOX1</div>
+	<div class="box2">BOX2</div>
+	<div>
+		<span>BOX3-1</span> 
+		<span>BOX3-2</span>
+		<p>BOX3-3</p>
+	<img src="../images/tick.png" alt="" />
+	<a href="http://www.daum.net">다음사이트이동</a>
+	<a href="http://www.w3schools.com">다음사이트이동</a>
+	<strong>css연습</strong>
+	</div>
+	<p class="p1">p1</p>
+	<p class="p2">p2</p>
+</body>
+</html>

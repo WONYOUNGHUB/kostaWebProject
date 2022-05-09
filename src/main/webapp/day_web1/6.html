@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table, td {
+	border-collapse: collapse;
+}
+
+
+</style>
+</head>
+<body>
+	<figure>
+	<h1>표만들기</h1>
+	<table border="1">
+		<tr>
+			<th>직원번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+
+		</tr>
+		<tr>
+			<td>100</td>
+			<td>홍길동</td>
+			<td>aa@daum.net</td>
+		</tr>
+		<tr>
+			<td>200</td>
+			<td>김길동</td>
+			<td>bb@daum.net</td>
+		</tr>
+	<figcaption>개인정보</figcaption>
+	</figure>
+
+	</table>
+	<br>
+	<hr>
+	<br>
+	
+	<table border="1">
+		<caption>개인신상</caption>
+		
+		
+		<colgroup>
+			<col style="width: 100px;">
+			<col style="width: 300px;">
+			<col style="width: 100px;">
+			<col style="width: 300px;">
+		</colgroup>
+		<tr>
+			<th>이름</th>
+			<td>김길동</td>
+			<th>연락처</th>
+			<td>010-1234-5678</td>
+		</tr>
+		<tr>
+			<th>주소</th>
+			<td colspan="3">서울시 구로구</td>
+		</tr>
+		<tr>
+			<th rowspan="2">자기소개</th>
+			<td colspan="3">열공중</td>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+		</tr>
+		<tr>
+			<th>취미</th>
+			<td rowspan="2">A</td>
+			<td>B</td>
+			<td>C</td>
+		</tr>
+		<tr>
+			<th>취미</th>
+			<td colspan ="2">B</td>
+		</tr>
+	</table>
+</body>
+</html>

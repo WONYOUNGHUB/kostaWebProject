@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function f(){
+	 document.getElementById
+	 var pw1 = document.getElementById("pwd1").value;
+     var pw2 = document.getElementById("pwd2").value;
+	alert("서버 가기전에 수행한다."+pw1+"---"+pw2);
+	document.getElementById("pwd1").focus();
+	if(pw1!=pw2){
+		return false;
+	}
+}
+
+</script>
+</head>
+<body>          <!--post방식은 한글꺠진다 인코딩해줘야함-->
+<form action="registerCheck.jsp" onsubmit="return f();" method="post">
+<fieldset>
+<legend>로그인정보</legend>
+아이디 <input type="text" id="user-id" name="user-id" autofocus="autofocus" />
+<br>
+비밀번호 <input type="password" id="pwd1" name="pwd1"  /> 
+<br>
+비밀번호확인 <input type="password" id= "pwd2"name="pwd2" /> 
+</fieldset>
+<fieldset>
+<legend>개인정보</legend>
+이름<input type="text" id="user-name" name="user-name"/>
+<br>
+메일주소<input type="text" id="mail" name="mail" />
+<br>
+연락처<input type="text" id= "phone" name="phone" />
+<br>
+블로그/홈페이지<input type="text" id ="homep" name="homep" />
+<br>
+</fieldset>
+<button type="submit">가입하기</button>
+</form>
+</body>
+</html>
