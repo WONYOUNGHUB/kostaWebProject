@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+span {
+	width: 100px;
+	display: inline-block;
+	background-color: lightpink;
+}
+</style>
+</head>
+<body>
+	<h1>반복문</h1>
+	<hr>
+	<button id="btn1">배열사용하구</button>
+	<button id="btn2">for of</button>
+	<button id="btn3">LAB1 직각삼격형모양</button>
+	<button id="btn4">LAB2 continue</button>
+	<button id="btn5">LAB3 break</button>
+	<hr>
+	<div id="here">요기요</div>
+	<script>
+btn4.onclick = function(){
+	
+	var output ="";
+	for(let gop =1; gop<=9; gop++){
+		for(let dan=2; dan<=9; dan++){
+			if(dan==4) continue;
+			output += `${dan}*${gop}=<span>${dan*gop}</span> &nbsp;&nbsp;&nbsp;`;
+		
+		}
+		output += "<br>";
+	}
+	
+	here.innerHTML = output;
+	
+	
+}
+
+
+btn3.onclick = function(){
+	var output ="";
+	var row = prompt("줄수입력",10); 
+	/* let i=1; i<=row; i++  */ 
+	for(let i = 1; i <= row; i++){  
+		for(let j=1; j<=i; j++){
+			output+="*";
+		}
+		output += "<br>";
+	}	
+	
+	here.innerHTML = output;
+}
+
+
+btn2.onclick = function(){
+	var arr = [100,99,88,77];
+	//index순서가 변수에 return된다.;
+	for(let index in arr){
+		here.innerHTML += "<br>"+ index + "==>" + arr[index];
+	}
+	//값이 변수에 return된다.
+	for(let data of arr){
+		here.innerHTML += "<br>"+ data;
+	}
+}
+btn1.onclick = function(){
+	var arr = [100,"자바스크립트배열",10>20,{name:"홍길동", age:20},[100,99,88],score,
+		function(){alert("함수입니다.");}];
+	var score=100;
+	
+	for(var i in arr){
+		here.innerHTML += "<br>" + i + "번쨰==>" + typeof(arr[i]) + ":" + arr[i];
+		if(typeof(arr[i])=="function"){
+			arr[i]();
+		}
+	}
+};
+
+</script>
+</body>
+</html>

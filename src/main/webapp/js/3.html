@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+margin:10px; border:1px solid blue;
+border:1px solid blue;
+padding: 10px;
+
+}
+
+</style>
+<script>
+//윈도우가 onload되면 이함수를 실행해라
+//window.onload = function(){
+	//obj= document.querySelector("#here");
+//}
+//호이스팅 : var, function() 맨먼저 수행하게된다.
+alert("global v1=" + v1);
+call2();
+
+var v1 = 1000;
+
+function f(){
+	obj = document.querySelector("#here");
+}
+function call1(){
+	var a=10;
+	var b = "자바스크립트";	
+	//백틱`` 이클립스에서는 지원하지않음 외부브라우저로 해야됨;
+	//obj.innerHTML = "a= " +a + "<br>b=" + b;
+	obj.innerHTML = `a=${a} <br> b=${b}`;
+}
+
+function call2(){
+	
+	//호이스팅 : var로 선언된 변수들을 맨위로 올림(먼저 수행한다)
+	obj.innerHTML =a;//var선언되어있으면 undefined a가 var선언안되있으면 not defined 에러가될것
+	var a=100;
+	obj.innerHTML +="<br>"+a;
+	var a = 200;
+	obj.innerHTML +="<br>"+a;
+}
+function call2(){
+	alert("<br>call2함수추가");
+}
+//var없음 > var> let
+function call3(){
+	var num1= 10;
+	num2 = 20;//전역변수
+	//let변수 block 안에서만 유효하게됨
+	//es5에서 추가(내부브라우저 지원안됨)	
+	for(let num3=1; num3<=10; num3++){
+		obj.innerHTML += "<br>num3=" + num3;
+	}
+	//num3 is not defined
+	obj.innerHTML +="<br>loop이후에 num3="+num3;
+}
+function call4(){
+	obj.innerHTML = num2 + num3;
+}
+function call5(){
+	const MAX = 1000;
+	obj.innerHTML = MAX;
+	alert("MAX는\"!!!!\"!!!!" + MAX +'입니다.');
+}
+</script>
+</head>
+<body onload="f();">
+<h1>JavaScript 변수와 함수 사용</h1>
+<hr>
+<button onclick="call1();">변수선언,백틱사용</button>
+<button onclick="call2();">호이스팅</button>
+<button onclick="call3();">의도하지않은 전역변수</button>
+<button onclick="call4();">의도하지않은 전역변수 접근</button>
+<button onclick="call5();">상수</button>
+
+<div id="here">여기</div>
+</body>
+</html>

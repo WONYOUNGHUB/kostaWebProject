@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>기본문법</h1>
+<hr>
+<button onclick="call();">논리연산자</button>
+<button onclick="call2();">논리연산자2</button>
+<button onclick="call3();">식별자재선언</button>
+<button onclick="call4();">(BOM)window객체의 모든정보</button>
+<input type="text" id="phone" value=""></input>
+<button onclick="call5();">prompt함수</button>
+<button onclick="call6();">confirm함수</button>
+<button onclick="call7();">문자와숫자혼합</button>
+<button onclick="call8();">타입변형</button>
+<button onclick="call9();">타입변형(Boolean)</button>
+
+<hr>
+<div id = "here">여기</div>
+<script>
+var obj = document.getElementById("here");
+
+function call9(){
+	obj.innerHTML += "<br>" + Boolean(0);
+	obj.innerHTML += "<br>" + Boolean("");
+	obj.innerHTML += "<br>" + Boolean(NaN);
+	obj.innerHTML += "<br>" + Boolean(null);
+	obj.innerHTML += "<br>" + Boolean(undefined);
+	obj.innerHTML += "<br>" + Boolean(10);
+	obj.innerHTML += "<br>" + Boolean("aa");
+	//자동 형변환된다는것이여.
+	obj.innerHTML +=  0 == false;
+	obj.innerHTML +=  1 == true;
+	obj.innerHTML +=  0 == "";
+	obj.innerHTML +=  10 == "10";
+	//값과 타입을 비교한다.
+	obj.innerHTML +=  10 === "10";
+	
+
+}
+
+function call8(){
+	
+	var a = '500달러';
+	var b = 1000;
+	//NaN(Not a Number)
+	//obj.innerHTML = Number(a)+b;
+	obj.innerHTML = parseInt(a)+b;
+	obj.innerHTML += parseInt(a) * b;
+
+	
+	
+	
+}
+
+
+function call7(){
+	obj.innerHTML = 100 + '200';
+	obj.innerHTML += '100' + '200';
+	obj.innerHTML += '<br>';
+	obj.innerHTML += 100 * '200'; //*는 숫자가 높다.
+	obj.innerHTML += '100' * '200';
+	obj.innerHTML += '100 * 200';
+	}
+
+
+function call6(){
+	var result = confirm("수락하시겠습니까");
+	//조건문
+	if(result){
+		obj.innerHTML = "감사합니다.";
+	}else{
+		obj.innerHTML = "다음기회에 뵙겠습니돠.";
+	}
+	//3항 연산자
+	obj.innerHTML += result?"감사합니다":"다음기회에뵙겠습니돠.";
+}
+
+
+function call5(){
+	var phoneObj = document.getElementById("phone");
+	var myPhone = phoneObj.value;
+	if(myPhone==""){
+		//alert("전화번호를 입력하세요");
+		var inputData =  prompt("전화번호를 입력하세요", "010");
+		phoneObj.value = inputData;
+	}
+}
+
+
+function call4(){
+	//향상된 for문 in사용
+	for(var pro in window){
+		obj.innerHTML +="<br>"+pro+"==>"+window[pro];
+	}
+}
+//변수명이 alert라고 되있으면 안댐.
+function call3(){
+	var aa = "식별자재선언";
+	alert(aa);
+}
+
+function call(){
+	//&&는 앞의결과가 틀리면 뒷부분 수행안함(자바와같음)
+	//&는 앞의결과가 무관하게 뒷부분 모두수행(결과가 number)
+	var a =100;
+	obj.innerHTML = a>20 && ++a>30;
+	obj.innerHTML += "<br>a=" + a;
+}
+function call2(){
+	//obj.innerHTML = 30>20>10;
+	obj.innerHTML = 30>20 && 20>10;
+}
+</script>
+</body>
+</html>

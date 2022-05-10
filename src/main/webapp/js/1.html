@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--HTML:구조적data(계층구조를 갖는 웹데이터)
+	CSS : display담당
+	JAVASCRIPT : 동작담당(사용자의 행위에의해 문서가 달라지도록한다.)
+	head, body 모두가능
+	일반적으로 head
+	시간이 소요되는작업은 body아래부분
+  -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="common.css" type="text/css" />
+<style>
+/*internal css  */
+h1 {
+	background-color: orange;
+}
+
+#here {
+	border: 1px solid blue;
+}
+</style>
+<script>
+	alert("1.head작성함");
+	console.log("1.head작성함");
+</script>
+<script>
+	alert("2.head작성함");
+	console.log("2.head작성함");
+	function call() {
+		document.getElementById("here").innerHTML += "<h1>aaKOSTA</h1>";
+	}
+</script>
+<script src="external.js"></script>
+<script>
+	f1();
+	f2();
+</script>
+</head>
+<body onload="call();">
+	<script>
+		alert("3.body시작에 head작성함");
+		console.log("3.body 시작에 작성함...권장아님");
+	</script>
+	<h1>JavaScript의 표준은 ECMAscript이다.</h1>
+	<button onclick="alert('버튼누름');">버튼</button>
+	<div id="here">여기</div>
+	<script>
+		document.getElementById("here").innerHTML += "<h1>bbKOSTA</h1>";
+
+		alert("4.body끝에 작성함");
+		console.log("4.body끝");
+	</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<hr>
+<h1>3장 조건문...1</h1>
+<h1>3장 조건문...2</h1>
+<button id="btn1">동적element생성</button>
+<button id="btn2">제목수정</button>
+
+<button id="btn3">LAB1..양수음수</button>
+<button id="btn4">LAB2...짝수홀수</button>
+<button id="btn5">LAB3..성적</button>
+<button id="btn6">LAB3..스위치성적</button>
+<hr>
+<!--처음에잆다가 ul 목록을 여기에 넣기  -->
+<div id = "here">여기</div>
+
+
+
+<script>
+btn3.onclick= function(){
+	var data = prompt("값을 입력하세요옹","");
+	var result;
+	if(data>0){
+		result = "양수";
+	}else if(data == 0){
+		result =  "0";
+	}else{
+		result = "음수";
+	}
+	document.querySelector("#here").innerHTML = result;
+}
+
+btn4.onclick= function(){
+	var data = prompt("값을 입력하세요옹","");
+	document.querySelector("#here").innerHTML = data%2 ==0?"짝수":"홀수";
+}
+
+btn5.onclick = function(){
+	var data = prompt("값을 입력하세요옹(100,99,88)","");
+	var arr = data.split(",");
+	var total = 0;
+	var grade;
+	for(let index in arr){
+		total +=Number(arr[index]);
+	}
+	var avg = total / arr.length;
+	if(avg>=90){
+		grade = "A";
+	}else if(avg>=80){
+		grade = "B";
+	}else if(avg>=70){
+		grade = "C";
+	}else if(avg>=60){
+		grade = "D";
+	}else {
+		grade = "F";
+	}
+	document.querySelector("#here").innerHTML = `당신의 총점은 
+										${total}이고 평균은 ${avg} 학점은${grade}`;
+}
+
+btn6.onclick = function(){
+	var data = prompt("값을 입력하세요옹(100,99,88)","");
+	var arr = data.split(",");
+	var total = 0;
+	var grade;
+	for(let index in arr){
+		total +=Number(arr[index]);
+	}
+	var avg = total / arr.length;
+	
+	 switch ( Math.floor(avg/10)) {
+	case 10:
+		grade="A+";
+		break;
+	case 9:
+		grade="A";
+		break;
+	case 8:
+		grade="B";
+		break;
+	case 7:
+		grade="C";
+		break;
+	case 6:
+		grade="D";
+		break;
+
+	default: grade = "F"; break;
+		break;
+	}
+	document.querySelector("#here").innerHTML = `당신의 총점은 
+										${total}이고 평균은 ${avg} 학점은${grade}`;
+}
+
+btn2.onclick= function(){
+	document.querySelector("h1:first-of-type").innerHTML = "aaaa"		
+}
+
+//btn1아이디 버튼 누르면 fucntion 실행해라;
+document.getElementById("btn1").onclick= function(){
+	var str = `
+		<ul>
+		  <li>HTML5<li>
+		  <li>CSS3<li>
+		  <li>JavaScript<li>
+		  <li>JSP/Servlet</li>
+		</ul>
+				`;
+	document.querySelector("#here").innerHTML = str;
+};
+
+</script>
+</body>
+</html>
