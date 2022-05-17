@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+span{color: white; background-color: navy;}
+
+</style>
+
+<script>
+console.dir(window);
+	//var name = "KOSTA";
+	var arr =[100,99,88];
+	var obj = {name2 :"홍길동",
+			age:20, 
+			"사는곳":"서울시 금천구",
+			군필:true,		
+			phone:["021234","01012345678"],
+			score:{"자바":100, "자바스크립트":90},
+			study : function(){alert("함수");},
+			study2 : function(subject){
+			
+			//here.innerHTML +="<br>" + name;
+			here.innerHTML +="<hr>" + this.name2;
+			
+			}
+			//오브젝트안의 함수 =메서드
+	};
+	
+	function call2(){
+		for(var index in arr){
+			here.innerHTML +="<br>" + arr[index];
+		}
+		for(var key in obj){
+			here.innerHTML +="<br>" + key + ":"+ typeof(obj[key]) + "==>" + obj[key];
+			if(typeof(obj[key])==="function" && key =="study2"){
+				obj[key]("JavaScript");
+			}
+		}
+	}
+	function call4(){
+		var obj2 = {name:"홍길동"};
+		obj2.age =30;
+		obj2.major = "컴공";
+		obj2.major = "경영";
+		obj2.name = "김영진";
+		/* for(var key in obj2){
+			here.innerHTML += "<br>" + key +  "==>" + obj2[key];
+		 }*/
+		 obj2.toString = function(){ //재정의 toString
+		 var str = "";
+		 for(var key in this){
+			str += "<br>" + key +  "==>" + obj2[key];
+		 }
+		 return str;
+	};
+		here.innerHTML += "<br>" + obj2; //== obj2.toString()		 
+		
+	}
+	var student = [{name:"홍길동", java:100, sql:90, js:80 },
+	    {name:"김길동", java:10, sql:20, js:30}
+	   ];
+	student.push({name:"박길동", java:10, sql:99, js:60});
+	student.push({name:"정길동", java:100, sql:20, js:88});
+	student.push({name:"양길동", java:77, sql:70, js:45});
+
+	for(var index in student){
+		student[index].getSum = function(){ return this.java+this.sql+this.js;};
+		student[index].getAvg = function(){ return this.getSum()/3;};	 
+	}
+		/* //object는 of 지원안됨/* 
+		for(var value of arr){
+			here.innerHTML +="<br>" + value;
+		} */
+ 	
+function call3(){
+	for(var key in obj){
+		here.innerHTML +="<br>"+key ;
+	}
+	//객체안에 속성이 존재하는지(값이있는지) 확인하는 방법
+	here.innerHTML += "<br>" + (name in window);
+	here.innerHTML +="<br>" + boolean('');
+	here.innerHTML +="<br>" + boolean('aaaa');
+}	
+	var student = [{name:"홍길동", java:100, sql:90 },
+				   {name:"김길동", java:10, sql:20, js:30 }
+				  ];
+	student.push({name:"김길동", java:10,sql:20,js:30});
+	student.push({name:"박길동", java:11,sql:21,js:31});
+	student.push({name:"진길동", java:12,sql:22,js:32});
+
+	for(var index in student){
+		student[index].getSum = function(){ return this.java+this.sql + this.js};
+		student[index].getAvg = function(){ return this.getSum/3;};
+			
+	
+function call5(){
+		
+		here.innerHTML += "<br> <sapn>이름은</span>"  + student[index]["name"] +		
+						   "<span>총점은</span>"+ student[index].getSum() +
+						  "<span>평균은</span>"+  student[index].getAvg();
+	}
+}
+	
+function call6(){
+	var arr = [];
+	arr.push(new Student("김길동", 100, 90, 80)); 
+	arr.push(new Student("김길동2", 101, 91, 81)); 
+	arr.push(new Student("김길동3", 102, 92, 82)); 
+	arr.push(new Student("김길동4", 103, 93, 83)); 
+	arr.push(new Student("김길동5", 104, 94, 84)); 
+	//같은 생성자 함수를 이용해서 만든 객체들이 공유하는 공간: prototype
+	Student.prototype.getSum = function(){return this.java+this.sql+this.js};	
+	Student.prototype.getAvg = function(){return this.getSum()/3;};	
+	Student.prototype.toString = function(){
+		return "<br> <sapn>이름은</span>"  + this[index]["name"] +		
+		  "<span>총점은</span>"+ this[index].getSum() +
+		  "<span>평균은</span>"+  this[index].getAvg();
+	}
+	//{name:"김길동",java:100, sql:90,js:80}
+	for(var index in arr){
+		here.innerHTML +=  arr[index];
+	}
+
+
+}
+function Student(name, java, sql, js){
+	this.name = name;
+	this.java = java;
+	this.sql = sql;
+	this.js = js;
+	
+}
+
+
+window.onload = function(){
+	btn2.onclick = call2;
+	btn3.onclick = call3;
+	btn4.onclick = call4;
+	btn5.onclick = call5;
+	btn6.onclick = call6;
+	
+	
+	btn1.onclick = function(){
+	var age = 100;
+	here.innerHTML += "<br>" + arr[0];
+	here.innerHTML += "<br>" + obj.name;
+	here.innerHTML += "<br>" + obj.age;
+	here.innerHTML += "<br>" + obj["사는곳"];
+	};
+};
+</script>
+</head>
+<body>
+<h1>object연습</h1>
+<button id = "btn1"  >object1</button>
+<button id = "btn2"  >object2</button>
+<button id = "btn3"  >object3</button>
+<button id = "btn4"  >object동적속성추가</button>
+<button id = "btn5"  >배열과오브젝트</button>
+<button id = "btn6"  >버튼6</button>
+<hr />
+<div id="here">여기</div>
+</body>
+</html>

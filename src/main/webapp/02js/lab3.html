@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="form">
+  <fieldset>
+    <legend>개인정보</legend>
+     <label for="jumin1">주민번호</label>
+     <input type="text" name="jumin1" id="jumin1" size="6"  maxlength="6"
+       onkeyup="focusChange(this);" /> -
+     <input type="text" name="jumin2" id="jumin2" size="7" maxlength="7"
+       onblur="genderCheck( this.value , form )"/> <br/> <br/>
+     <div id="display"> </div> 
+     <label for="gender">성별</label>
+     <input type="radio" name="gender"   value="man"
+     checked="checked" disabled="disabled"/>남자
+     <input type="radio" name="gender"   value="woman"
+             disabled="disabled"/>여자
+ 
+     <input type="button" value="check" onclick="check()" />
+  </fieldset>
+ 
+</form>
+
+</body>
+</html>

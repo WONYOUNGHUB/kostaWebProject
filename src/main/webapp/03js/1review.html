@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function call(){
+here.innerHTML = "<h1>1.선언적함수(이름있는함수)</h1>"; 
+
+}
+var f = function(){
+	here.innerHTML = "<h1>2.익명함수</h1>";	
+
+};
+function call2(){
+	call3(); //내부에서만 부르는게가능한거
+	function call3(){
+	here.innerHTML = "<h1>3.내부함수</h1>";	
+		
+	}
+}
+function call4(param){
+	param();
+
+}
+function call5(){
+	here.innerHTML = "<h1>4.콜백함수</h1>";	
+}
+function call6(){
+	setInterval(call7,1000);
+	
+}
+function call7(){
+	here.innerHTML = "<h1>" + new Date() + "</h1>";
+}
+function call8(param){
+	var a = 10 + param;
+	return function(){
+		alert("함수리턴 a= " + a + " param=" +param);
+	};
+}  
+
+
+/* (function(){
+	here.innerHTML = "<h1>2.익명함수</h1>";	
+
+})();  ()()괄호닫기 위에서 실행하면 바로실행 오류날거야 f처럼 변수 var에 담아야되 밑에있으면 실행될거*/
+</script>
+</head>
+<body>
+<h1>사용자정의 함수 function</h1>
+<button id= "btn1" onclick ="call();">1.선언적함수(이름있는함수)</button>
+<button id= "btn2" onclick ="f()">2.익명함수</button>
+<button id= "btn3" onclick = "call2()">3.내부함수(함수내에 있는 함수)</button>
+<button id= "btn4" onclick = "call4(call5)">4.콜백함수(받은쪽에서 호출)</button>
+<button id= "btn4" onclick = "call6">5.콜백함수2(받은쪽에서 호출)</button>
+<button id= "btn5" onclick = "call8(1)();">5.클로저</button>
+<button id= "btn5" onclick = "f2=call8(1);alert(f2);f2()">5.클로저2</button>
+
+<hr />
+<div id="here">여기</div>
+
+</body>
+</html>

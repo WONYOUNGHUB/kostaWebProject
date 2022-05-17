@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+
+		here.innerHTML = "자바 스크립트 내장함수 연습";
+		call();
+		btn1.onclick = call;
+		btn2.onclick = call2;
+		btn3.onclick = call3;
+		btn4.onclick = call4;
+		btn5.onclick = call5;
+		btn6.onclick = call6;
+		btn7.onclick = call7;
+		btn8.onclick = call8;
+	};
+	var arr = ["yellow","lightgreen","hotpink","lightblue"];
+	
+	window.onmousemove = function(){
+		clearInterval(interval);
+	};
+	function call(){
+		//화살표함수(다른언어는 람다식)
+		interval = setInterval(() => {
+			var su =Math.floor( Math.random()*arr.length)
+			document.bgColor = arr[su]
+		},2000);
+	}
+	function call2(){
+		var uri = "http://localhost:9090/kostaWebProject/02js/4_내장함수.html";
+	    var result = encodeURIComponent(uri);
+		here.innerHTML = result;
+		here.innerHTML += "<br>" + decodeURIComponent(result);
+	}
+	function call3(){
+		var str = eval( "var a =10;var b=20;alert(a+b);");
+	}
+	function call4(){
+		var a = document.querySelector("#num1").value;
+		var op = document.querySelector("#op").value;
+		var b = document.querySelector("#num2").value;
+		var result  = a + op +b;
+		document.querySelector("#result").value = eval(result);
+	}
+	function call5(){
+		var a = NaN;
+		var b = Number("100달러");
+		
+		
+		here.innerHTML = a == isNaN(b);
+		here.innerHTML += "<br>"+ a;
+		here.innerHTML += "<br>"+ b;
+	}
+	function call6(){
+		
+		test(10);
+	}
+	//매개변수에 값이 전달되지 않은 경우 undefined 인데 이에대한 초기값을 할당하는방법
+	//방법1
+	function test(a,b,c){
+		//alert(!Boolean(b));
+		if(!b) b = 200;
+		if(!c) c = 300;
+		here.innerHTML = a+b+c;
+	}
+	//방법2
+	function test(a,b,c){
+		//alert(!Boolean(b));
+		b = b|| 1000;
+		c = c|| 2000;
+		here.innerHTML = a+b+c;
+	}
+	//방법3 ecmaScript6에서 새로추가 
+	function test(a,b=1,c=2){
+		here.innerHTML = a+b+c;
+	}
+	function call7(){
+		//1.익명함수
+		var f = function(a,b){return a+b;};
+		//2.화살표함수
+		var f2 = (a,b)=> a+b;
+		
+		here.innerHTML = f(1,2) + f2(100,200);
+			
+	}
+	function call8(){
+		call9(1,2,3);
+		var arr = [100,200,300];
+		call(...arr);
+	}
+	function call9(...nums){
+		here.innerHTML = nums[0] + nums[1] + nums[2];
+	}
+</script>
+</head>
+<body>
+	<h1>자바스크립트 내장함수</h1>
+	<button id="btn1">배경색바꾸기</button>
+	<button id="btn2">encode</button>
+	<button id="btn3">eval</button><hr />
+	<input type="number" id ="num1" />
+	<select id="op">
+	<option>+</option>
+	<option>-</option>
+	<option>*</option>
+	<option>/</option>
+	<option>%</option>
+	</select>
+	<input type="number" id ="num2" />
+	<button id="btn4">=</button>
+	<input type="number" id ="result" />
+	
+	<button id="btn5">NaN</button>
+	<button id="btn6">초기값</button>
+	<button id="btn7">람다</button>
+	<button id="btn8">전개연산자</button>
+	<hr>
+	<div id="here">여기</div>
+</body>
+</html>

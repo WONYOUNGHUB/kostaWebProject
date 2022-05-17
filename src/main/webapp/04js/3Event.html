@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//이벤트이름:load
+//이벤트속성: onload
+//이벤트 핸들러 , 리스너 : funciton(){}
+window.onload = function(){
+//document.querySelector("#header1").onclick = function(){}
+	var flag = true;
+	document.querySelector("#header1").onclick = function(ee){
+	//alert(this.innerHTML)
+		if(flag)
+		this.style.backgroundColor = "orange";
+		else
+		this.style.backgroundColor = "lightgreen";
+		
+	flag = !flag;
+	ee = ee||window.event;
+	here.innerHTML = "위치 x="+ ee.clientX + "y=" + ee.clientY;
+	
+	};
+	btn1.onlclick = function(){
+		header1.onclick();
+	};
+	btn2.onclick = function(){
+		console.log(document.querySelector("#myfrm"));
+	};
+	myfrm.onsubmit = function(){
+		var userid = document.querySelector("input[name='userid']").value;
+		var userid = document.querySelector("input[name='userpass']").value.trim();
+		if(userid.length==0||userpass.length==0){
+		alert("아이디 또는 비밀번호 입력은 필수입니다.")			
+		return false;
+		}
+	};
+};//onload닫기
+function call(){
+	false;
+}
+</script>
+</head>
+<body>
+<h1 id="header1">header1..이벤트연결</h1>
+<button id="btn1">이벤트강제발생</button>
+<button id="btn2">form정보 알아내기</button>
+
+
+<form  id= "myfrm" action="4.jsp" onsubmit="return false">
+	아이디<input type="text" name= "userid" value = "admin" >
+	비밀번호<input type="text" name= "userPass" value = "1234" >
+	<input type="submit" value="서버전송">
+</form>
+<hr />
+<div id="here">여기</div>
+</body>
+</html>
