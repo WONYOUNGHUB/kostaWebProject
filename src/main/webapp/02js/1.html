@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수연습</h1>
+<ul>
+<li id="li1">1.이름있는함수(일반적)</li>
+<li id="li2">2.이름없는함수(익명함수)</li>
+<li id="li3">3.콜백함수</li>
+<li id="li4">4.함수재정의</li>
+<li id="li5">5.함수의 매개변수</li>
+<li id="li6">6.함수의 매개변수 array</li>
+<li id="li7">7.리턴</li>
+<li id="li8">8.콜백함수</li>
+</ul>
+<hr >
+<div id="here">여기</div>
+<script>
+alert(pythagoras());
+function pythagoras(){
+	var width =3;
+	var height =4;
+	return Math.sqrt(square(width) + square(height));
+	
+	//내부함수 외부에 동일함수가 있을수 있으니까 안으로 선언
+	//내부함수는 외부에서 호출불가
+	function square(xx){
+		return xx*xx
+	}
+}
+
+
+function myFunction(a){
+	here.innerHTML = "myfunction시작";
+	//return; 생략되어있음 호출한곳으로간다.
+	
+	if(a>10) return;
+	here.innerHTML +="myFunction끝";
+
+}
+function myFunction2(a){
+	here.innerHTML = "myfunction시작";
+	//return; 생략되어있음 호출한곳으로간다.
+	
+	if(a>10) return "OK";
+	here.innerHTML +="myFunction끝";
+
+	return "NO";
+	
+}
+</script>
+
+<script>
+
+var a = 10;
+var a = "문자";
+var a = [];
+var a = {};
+var a = function(){};
+
+li8.onclick = function (){
+
+	function call(f){
+		f();
+		f();
+	}
+	
+	call(function (){
+		here.innerHTML +="callback함수 test";
+	});
+	call(pythagoras);
+	
+}
+li7.onclick = function (){
+	myFunction(20);
+	var result = myFunction2(10);
+	here.innerHTML += "<br> result= " + result;
+}
+
+
+li6.onclick = function(){
+	var arr1 = Array();
+	var arr2 = Array(10);
+	var arr3  = Array(1,2,3,4,88,99);
+	here.innerHTML += "<br>"+ typeof(arr1)+":"+arr1.length;
+	here.innerHTML += "<br>"+ typeof(arr2)+":"+arr2.length;
+	here.innerHTML += "<br>"+ typeof(arr2)+":"+arr3.length;
+	
+	var total = 0;
+	 sumAll();
+	sumAll(1,2,3,4,5);
+	sumAll(100,200);
+	sumAll("javascript","HTML5"); 
+	//자바스크립트는 함수의 오버로딩 불가 오버라이드만가능하다.
+	function sumAll(){
+		//arguments객체가 내장되어있다.
+		for(let index in arguments){
+			total += arguments[index];
+		}
+		here.innerHTML += "<br>" + total;
+	}
+	
+};
+
+
+li5.onclick  = function(){
+	
+	function call(a,b,c,){
+		here.innerHTML += "<br> a=" + a;
+		here.innerHTML += "<br> b=" + b;
+		here.innerHTML += "<br> c=" + c;
+		here.innerHTML += "<hr>";
+	}
+	//javascript는 매개변수의 갯수를 맞추지않아도된다.
+	call();
+	call(10);
+	call(20,30);
+	call(40,50,60);
+	call(40,50,60,999);
+};
+
+
+li4.onclick = function(){
+	//호이스팅 var 변수를 올림, 함수정의 ,코드실행
+	f1(); //2
+	function f1(){
+		alert("1");
+	};
+	function f1(){
+		alert("2");
+	} ;
+	f1();//2
+	var f1 = function(){
+		alert("3");
+	};
+	f1();//마지막엔 3이나올것
+};
+
+
+li3.onclick = function(){
+	//callback함수 : 함수가 매개변수로 전달되고 받은쪽에서 호출한다.
+	setInterval(function(){
+		here.innerHTML = new Date() + "<br>";
+		
+	},1000);
+	
+};
+
+
+li2.onclick = function(){
+	//익명함수 선언하고 실행하기
+	(function(){
+		var obj = document.getElementById("li2")
+	here.innerHTML = li2.innerHTML;
+	})();
+
+	var myfunction = function(){
+	here.innerHTML += "<br>" + "익명함수...";		
+	
+	};
+	//할당 후 호출가능
+	myfunction();
+	myfunction();
+};
+
+li1.onclick = function(){
+	f1();
+	function f1(){
+		here.innerHTML = "이름있는 함수(일반적)";
+		here.innerHTML = "<br>함수내의 함수는 내부함수"
+	};
+};
+
+</script>
+</body>
+</html>

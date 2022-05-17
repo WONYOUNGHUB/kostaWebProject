@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+function call(){
+	here.innerHTML = "callback함수1";
+	call2(function(){return 100;});	
+	call2(function(){return "자바스크립트";});
+	call2(call3);
+}
+
+function call2(f){
+	//매개변수로 함수가 전달되고 전달받은쪽에서 실행
+	here.innerHTML += "<br>"+ f();
+	
+}
+function call3(){
+	var a= 10;
+	var b = 20;
+	return a+b;
+}
+function test(){
+	
+	setInterval(timeDispaly, 1000);
+	
+	function timeDisplay(){
+		here.innerHTML = new Date();
+	}
+}
+//선언적함수 test2
+//익명함수 function (){}
+//setInterval함수가 익명함수를 호출한다(callback)s
+function test2(){
+	
+	setInterval(function (){
+		here.innerHTML = new Date();
+	}, 1000);
+	
+	
+}
+function example(){
+	var result = test3();
+	here.innerHTML = result;
+	result();
+	
+}
+function test3(){
+	var a=10;
+	return function(){
+		here.innerHTML += "<br>" + ++a;
+		
+	};
+	
+}
+
+function teest4(param){
+	var output= "Hello~~" +param; 
+	return function(){};
+		return output;
+	};
+	
+function example2(){
+	var f1 = test4("자바");
+	var f2 = test4("css");
+	var result1 = f1();
+	var result2 = f2();
+	here.innerHTML = result1 +"*******"+ result2
+}
+
+function test5(param){
+	var su = param; 
+	return function(){
+	su++;	
+	return su;
+	};
+};
+var num_func1 = test5(0);
+var num_func2 = test5(100);
+
+function example3(){
+	here.innerHTML = num_func1();
+}
+
+function example4(){
+	here.innerHTML = num_func2();
+}
+
+/* var add = (function(){
+	var num= 0;
+	return function(){ //지역변수 num을 살리려고 function을 만들어서 리턴
+		num++;
+		return num;
+	};
+})();   //익명방법 */
+function increment(){ //선언적함수방법
+	var num= 0;
+	return function(){ //지역변수 num을 살리려고 function을 리턴
+		num++;
+		return num;
+	};
+	
+}
+var add = increment();
+//add 를실행한결과 (num에대한 return function(){}) 가 들어간다.
+function example5(){
+	here.innerHTML = add();
+}
+</script>
+
+</head>
+<body>
+<h1>함수연습</h1>
+<ol>
+	<li><a href="javascript:call();">callback함수연습1</a></li>
+	<li><a href="1.html">link</a></li>
+	<li><a href="javascript:test()">callback함수연습3</a></li>
+	<li><a href="javascript:example();">클로져(지역변수사용위배)</a></li>
+	<li><a href="javascript:example2();">클로져2</a></li>
+	<li><button onclick="example3();">0부터 1씩증가</button></li>
+	<li><button onclick="example4();">100부터 1씩증가</button></li>
+	<li><button onclick ="example5();">counter</button></li>
+</ol>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

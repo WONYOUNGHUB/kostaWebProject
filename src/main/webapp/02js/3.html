@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>함수test</h1>
+	<button id="btn1">선언적함수</button>
+	<button id="btn2">익명함수</button>
+	<button id="btn3">내부함수</button>
+	<button id="btn4">콜백함수</button>
+	<button id="btn5">클로저</button>
+	<button id="btn6">클로저2</button>
+	<button id="btn7">클로저3</button>
+	<button id="btn8">클로저4</button>
+	<script>
+		//LAB 배경색을 가변으로 10마다바꾸기
+		var arr = [ "yellow", "lightgreen", "hotpink", "ligthblue" ]
+		/* var su = Math.floor(Math.random() * arr.length);
+		console.log(su)
+		document.bgColor = arr[su];
+ */
+		
+		
+		
+		var interval = setInterval(function() {
+			var su = Math.floor(Math.random() * arr.length);
+			console.log(su)
+			document.bgColor = arr[su];
+		}, 2000);
+
+		window.onmousemove = function(){
+			clearInterval(interval)
+		};
+		
+		
+		
+		
+		btn1.onclick = function() {
+			call();//함수호출
+			function call() {
+				alert("선언적함수이면서 function내에있는 내부함수.")
+			}
+
+		};
+		btn3.onclick = function() {
+			btn1.onclick();//버튼1을 누른것과 같은기능 btn1.onclick 호출
+		};
+		btn2.onclick = function() {
+			(function() {
+				alert("익명함수..이름이없는 함수")
+				var a = 10;
+			})(); //익명함수 실행방법 (function(){});
+			var f = function() {
+				alert("익명함수..이름이없는 함수")
+			};
+			f();
+			f();
+		};
+		btn4.onclick = function() {
+
+			call(function() {
+				alert("익명함수를 파라미터로전달 하고있음 수행은 받은쪽에서")
+			});
+			call(func);
+
+			function func() {
+				alert("서넝ㄴ적함수를 파라메터로 전달 수행은받은쪽에서")
+			}
+		};
+		function call(f) {
+			f();
+		}
+		btn5.onclick = function() {
+			var result = call2();
+			result();
+		};
+
+		function call2() {
+			var su = 0;
+			return function() {
+				su++
+				alert(su);
+			}
+
+		}
+
+		btn6.onclick = function call() {
+			for (var i = 0; i < 3; i++) {
+				setTimeout(function() {
+					alert(i);
+				}, 0);
+			}
+		};
+		btn7.onclick = function() {
+			for (var i = 0; i < 3; i++) {
+				(function(aa) {
+					setTimeout(function() {
+						alert(aa);
+					}, 0);
+				})(i)
+			}
+		};
+		btn8.onclick = function() {
+			var arr = [ 100, 99, 88, 77 ];
+			arr.forEach(function(elt, index, array) {
+				setTimeout(function() {
+					alert(index + "--->" + elt + "==>" + array);
+				}, 0);
+			})
+		};
+	</script>
+</body>
+</html>
