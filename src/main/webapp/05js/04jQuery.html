@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../jslib/jquery-3.6.0.min.js"></script>
+<style>
+.aa{background-color:lime;}
+.bb{background-color:pink;}
+</style>
+
+<script>
+//$.noConfilct();(javascript라이브러리들이 $를 사용많이하기떄문에충돌을피하기위해)
+//$사용하지않겠다는뜻 문자 Jquery로 다바꿔줘야함
+
+$(function(){
+	//alert("jquery ok");
+	$("#btn1").click(function(){
+		var arr = ["월요일","화요일","토요일","일요일"];
+		
+		var output = "<h1>javascript</h1><ul>";
+		arr.forEach(function(elt, i, array) {
+			output += "<li>" + elt + "</li>";
+		});
+		here.innerHTML = output + "</ul>";
+	
+	
+		//jQuery
+		var output =$("#here").html()+ "<h1>jquery</h2><ul>";
+		$.each(arr,function(i,elt){//js와 반대
+			output +="<li>"+elt + "</li>";
+		});
+		$("#here").html(output+"</ul>");
+	
+	});
+
+	$("#btn2").click(function(){
+		var output = "";
+		$("li").each(function(i,element) {
+			output += $(element).text();
+		});
+		output = $("#here").html() + "<hr>" + output;
+		$("#here").html(output);
+	
+	});
+	
+	$("#btn3").click(function(){
+		
+		
+		$("li").each(function(i,element){
+			if(i%2==0){
+				$(this).addClass("aa");
+			}else{
+				$(this).addClass("bb");
+			}
+		});
+	});
+	
+	$("#btn4").click(function(){
+		var obj1 = {name:"홍길동"};
+		obj1.age = 20;
+		var obj2 = {address:"금천구 가산디지털",phone:"010-1234-5678"};
+		
+		$.extend(obj1,obj2,{"major":"컴공"});
+		console.log(obj1);
+		$("#here").html(JSON.stringify(obj1));
+		
+		var output = "";
+		$.each(obj1, function(key, value) {
+			output += "<br>"+ key + "==>" + value;	
+		});
+		$("#here").html($("#here").html() + output);
+	});
+	
+});
+</script>
+<title>Insert title here</title>
+
+</head>
+<body>
+<h1>jQuery연습</h1>
+<button id="btn1">배열(선언된변수)</button>
+<button id="btn2">배열(selector)</button>
+<button id="btn3">배열(selector)</button>
+<button id="btn4">object</button>
+<hr />
+<div id="here">여기</div>
+</body>
+</html>

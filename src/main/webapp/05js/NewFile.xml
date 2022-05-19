@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<friends>
+	<friend>	
+	<name>홍길</name>
+	<phone>01012345678</phone>
+	</friend>
+	<friend>	
+	<name>홍길2</name>
+	<phone>01011115678</phone>
+	</friend>
+	<friend>	
+	<name>홍길3</name>
+	<phone>010121145678</phone>
+	</friend>
+</friends>
+	

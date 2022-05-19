@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event연습</title>
+<script type="text/javascript">
+window.onload = function(){
+   btn2.onclick = call;
+   btn3.onclick = function(){
+	   console.log(this)
+      alert(this.innerHTML);
+      call();
+   };
+   myspan.onclick = function(){
+	alert("span누름");
+	e.stopPropagation();//이벤트전달을 막음.
+   };
+   myh1.onlclick = function(ee){
+	   alert(this.innerHTML);
+	   ee.stopPropagation();
+   };
+   mydiv2.onlclick = function(ee){
+	   alert(this.innerHTML);
+	   ee.stopPropagation();
+   };
+   mydiv1.onlclick = function(ee){
+	   alert(this.innerHTML);
+   };
+  /*
+  이벤트속성
+  btn4.attachEvent("onclick",function(ee){
+	  alert(this.innerHTML); 
+   }); */
+   //주의 : 이벤트이름을 사용
+   btn5.addEventListener("click",function(ee){
+	   alert(this.innerHTML)
+   },false);
+
+
+};//window
+function call(){
+   alert(this.innerHTML);
+   console.log(this);
+}
+function call2(){
+	var a = document.querySelector('input[name="userid"]').value;
+	if(a != "admin") return false;
+	return true;
+}
+</script>
+
+<style>
+div,h1,span{border:1px solid gray; padding: 10px;}
+</style>
+
+</head>
+<body>
+<h1>Event연습</h1>
+<button id="btn1" onclick = "alert(this.innerHTML)">인라인이벤트</button>
+<button id="btn2">고전방식</button>
+<button id="btn3">this가 누구?</button>
+<button id="btn4">3.DOM Level2 IE이벤트모델</button>
+<button id="btn5">4.DOM Level2 표준이벤트모델</button>
+
+
+
+<h2>default event취소연습 ... onsubmit에서 return false</h2>
+<form  id= "myfrm" action="4.jsp" onsubmit="return call2()">
+	아이디<input type="text" name= "userid" value = "admin" >
+	비밀번호<input type="password" name= "userPass" value = "1234" >
+	<input type="submit" value="서버전송">
+</form>
+<hr>
+<div  id="mydiv1">
+	<div id="mydiv2">
+	<h1 id="myh1">
+		캡처링과 버블링<span id="myspan">이벤트가 전달된다.</span>
+	</h1>
+	</div>
+</div>
+</body>
+</html>

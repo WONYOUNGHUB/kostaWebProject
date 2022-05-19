@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../jslib/jquery-3.6.0.min.js"></script>
+<title>Insert title here</title>
+<script>
+var obj = {"background-color":"orange",color:"blue"};
+	$(function(){
+		$("#btn1").on("click", f1);
+		$("#btn2").on("click", f2);
+		$("#btn3").on("click", f3);
+		$("#btn4").on("click", f4);
+		$("#btn5").on("click", f5);
+		$("#btn6").on("click", f6);
+		$("#btn7").on("click", f7);
+		$("#btn8").on("click", f8);
+	});
+	function f1(){
+		var a = $("img").first().attr("src");
+		//var a = document.querySelector("img").src;
+		//var a = document.getElementsByTagName("img")[0].src;
+		$("#here").html(a);
+	}
+	function f2(){
+		$("img").first().attr("src","../images/muffin.png");
+	}
+	function f3(){
+		$("img").attr("src",function(index){
+			if(index==0) return "../images/gugudan.jpg";
+			return "../images/muffin.png";
+		});
+		$("img").attr("width",function(index){
+				return (index+1)*100;
+					
+		});
+				
+	}
+	function f4(){
+		var obj2 = {"src":"../images/muffin.png","width":100};
+		obj2.src = function(index){if(index==0) return "../images/gugudan.jpg";
+		return "../images/muffin.png";};
+		obj2.width = function(index){ return (index+1)*100;};
+		$("img").attr(obj2);
+	}
+	function f5(){}
+	function f6(){
+		$("here").remove();
+	}//태그를 지워버림.
+	function f7(){
+		$("here").empty(); //태그는남아있음
+	}
+	function f8(){
+		$("<h1></h1>").text("Hello1~").appendTo("#here");//바로뒤
+		$("<h1></h1>").text("Hello2~").prependTo("#here");//앞부분
+		$("<h1></h1>").text("Hello3~").insertBefore("#here");
+		$("<h1></h1>").text("Hello4~").insertAfter("#here");
+		$("<img>").attr({"src":"../images/automobile.svg","width":100}).appendTo("#here");
+	}
+</script>
+
+</head>
+<body>
+<button id="btn1">속성얻기</button>
+<button id="btn2">속성변경</button>
+<button id="btn3">속성변경(함수)</button>
+<button id="btn4">속성변경(object)</button>
+<button id="btn5">속성제거</button>
+<button id="btn6">객체remove</button>
+<button id="btn7"> empty</button>
+<button id="btn8">객체생성</button>
+<hr>
+<div id="here">여기</div>
+<img src="../images/umbrella.jpg">
+<img src="../images/fantasy.jpg" alt="" />
+</body>
+</html>

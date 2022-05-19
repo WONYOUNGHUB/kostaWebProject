@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--jQuery CDN 가져와야 쓸수있다.-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){alert("aa");};
+window.onload = function(){alert("bb");};
+
+
+//jQuery문법 $(대상).함수이름();
+//jQuery(document).ready(function(){alert("cc");});
+//$(document).ready(function(){alert("cc");});
+//$(document).ready(function(){alert("dd");});
+//$(function(){alert("ee");});
+$(function(){
+	$("#btn1").click(function(){
+		$("h1").css("color","red");
+		$("h1").css({"background-color":"orange","border":"1px solid gray"});
+		$("#here").css("border","2px solid blue");
+		$(this).css("color","red");//jQuery
+		this.style.border = "2px solid blue"//JS
+		//# => id 선택자
+		
+		$(".aa").css("border","2px solid green");
+		$("input:text").css("background-color","pink");
+		$("input:button").css("background-color","yellow");
+		
+		var aa = $("select > option:selected").val()
+		$("#here").html("<h1>"+aa+"</h1>");
+
+		$("select>option:even").css("background-color","navy");
+		
+		$("p:contains('태그')").css("background-color","navy");
+	})
+});
+
+
+
+</script>
+
+</head>
+<body>
+<button id="btn1">스타일 변경하기</button>
+<h1>jQuery연습</h1>
+<h1>jQuery연습</h1>
+<h2 class="aa">jQuery연습</h2>
+<div id="here"> 여기 </div>
+<p class="aa">p입니다</p>
+<p>p입니다.</p>
+<p class="aa">p태그</p>
+<p class="aa">p입니다</p>
+<input>
+<input type="text">
+<input type="button">
+<select>
+	<option>월</option>
+	<option>화</option>
+	<option>수</option>
+	<option selected ="selected">토</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</select>
+</body>
+</html>
